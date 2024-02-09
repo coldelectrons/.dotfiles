@@ -10,7 +10,7 @@
 
   imports = [ ../laptop/home.nix # Personal is essentially work system + games
               ../../user/app/games/games.nix # Various videogame apps
-              ../../user/app/cad/cad.nix # Various CAD apps
+              #../../user/app/cad/cad.nix # Various CAD apps
             ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.

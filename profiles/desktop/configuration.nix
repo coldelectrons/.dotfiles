@@ -5,7 +5,7 @@
 { ... }:
 {
   imports =
-    [ ../work/configuration.nix # Personal is essentially work system + games
+    [ ../laptop/configuration.nix # desktop is essentially laptop system + games + work
       ../../system/hardware-configuration.nix
       #../../system/hardware/openrgb.nix
       ../../system/app/gamemode.nix

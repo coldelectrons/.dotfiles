@@ -5,7 +5,7 @@
 { pkgs, lib, systemSettings, userSettings, ... }:
 {
   imports =
-    [ ../../system/hardware-configuration.nix
+    [ /etc/nixos/hardware-configuration.nix
       ../../system/hardware/systemd.nix # systemd config
       ../../system/hardware/kernel.nix # Kernel config
       ../../system/hardware/power.nix # Power management

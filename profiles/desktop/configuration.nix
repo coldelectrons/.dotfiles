@@ -6,7 +6,7 @@
 {
   imports =
     [ ../laptop/configuration.nix # desktop is essentially laptop system + games + work
-      ../../system/hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
       #../../system/hardware/openrgb.nix
       ../../system/app/gamemode.nix
       #../../system/app/cad.nix

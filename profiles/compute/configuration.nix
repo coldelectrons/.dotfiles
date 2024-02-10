@@ -5,16 +5,17 @@
 { ... }:
 {
   imports =
-    [ ../work/configuration.nix # Personal is essentially work system + games
-      ../../system/hardware-configuration.nix
+    [ ../laptop/configuration.nix # 
+      /etc/nixos/hardware-configuration.nix
       #../../system/hardware/openrgb.nix
-      ../../system/app/gamemode.nix
-      ../../system/app/steam.nix
-      ../../system/app/cad.nix
-      ../../system/app/prismlauncher.nix
+      ../../system/app/compute.nix
+      #../../system/app/gamemode.nix
+      #../../system/app/steam.nix
+      #../../system/app/cad.nix
+      #../../system/app/prismlauncher.nix
       ../../system/security/doas.nix
       ../../system/security/gpg.nix
-      ../../system/security/blocklist.nix
+      #../../system/security/blocklist.nix
       ../../system/security/firewall.nix
     ];
 }

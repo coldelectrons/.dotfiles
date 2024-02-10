@@ -3,8 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     cudatoolkit
-    cudnn
-    cutensor
+    cudaPackages.cudnn
+    cudaPackages.cutensor
     #python311Packages.torchWithCuda
     #python311Packages.transformers
     llama-cpp ollama

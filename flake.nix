@@ -7,6 +7,7 @@
       	      blocklist-hosts,
               rust-overlay,
               hyprland-plugins,
+              freecad-realthunder,
               ... }@inputs:
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -60,7 +61,7 @@
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true);
                  permittedInsecurePackages = [
-                   "qtwebkit-5.212.0-alpha4"
+                   "qtwebkit-5.212.0-alpha4" # needed by smtube, but doesn't even compile???
                  ];
         };
       overlays = [ rust-overlay.overlays.default ];
@@ -83,20 +84,20 @@
   in {
     homeConfigurations = {
       user = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ (./. + "/profiles"+("/"+systemSettings.profile)+"/home.nix") # load home.nix from selected PROFILE
-                      inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
-                    ];
-          extraSpecialArgs = {
-            # pass config variables from above
-            inherit pkgs-stable;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit (inputs) nix-flatpak;
-            inherit (inputs) stylix;
-            inherit (inputs) hyprland-plugins;
-            inherit (inputs) freecad-realthunder;
-          };
+        inherit pkgs;
+        modules = [ (./. + "/profiles"+("/"+systemSettings.profile)+"/home.nix") # load home.nix from selected PROFILE
+                    inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
+                  ];
+        extraSpecialArgs = {
+          # pass config variables from above
+          inherit pkgs-stable;
+          inherit systemSettings;
+          inherit userSettings;
+          inherit (inputs) nix-flatpak;
+          inherit (inputs) stylix;
+          inherit (inputs) hyprland-plugins;
+          inherit (inputs) freecad-realthunder;
+        };
       };
     };
     nixosConfigurations = {

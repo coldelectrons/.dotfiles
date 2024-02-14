@@ -49,12 +49,14 @@
   boot.kernelModules = [ "i2c-dev" "i2c-piix4" "cpufreq_powersave" ];
 
   # Bootloader
+  # TODO add a if-then and option for this
   boot.loader.systemd-boot.enable = true;
+  # XXX WTF aren't these in the default configuration.nix at install
   # boot.loader.grub.enable = true;
   # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.devices = ["/dev/disk/by-id/ata-T-FORCE_2TB_TPBF2304210080300479"];
+  # boot.loader.grub.devices = ["nodev"];
+  # boot.loader.grub.useOSProber = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Networking
@@ -80,7 +82,8 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" ];
+    # TODO make submodules add extragroups, don't just shotgun it here
+    extraGroups = [ "networkmanager" "wheel" "video" "kvm" "libvirt" ];
     packages = [];
     uid = 1000;
   };
@@ -88,15 +91,23 @@
   # System packages
   environment.systemPackages = with pkgs; [
     vim neovim nano
-    mc
+    mc yazi
     wget curl
-    zsh
+    zsh powerlevel10k
     git
     cryptsetup
     home-manager
 
     #messaging
     signal-desktop
+
+    # util
+    bitwarden
+    bitwarden-cli
+
+    # games
+    playonlinux
+    lutris
   ];
 
   services.tailscale.enable = true;
@@ -105,6 +116,9 @@
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
+  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+
+  programs.yazi.enable = true;
 
   fonts.fontDir.enable = true;
 

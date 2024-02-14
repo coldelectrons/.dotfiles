@@ -3,16 +3,16 @@ These are just some simple install notes for myself (in-case I have to reinstall
 ## Install Notes for Myself
 To get this running on a NixOS system, start by cloning the repo:
 ``` sh
-git clone https://gitlab.com/librephoenix/nixos-config.git ~/.dotfiles
+git clone https://gitlab.com/coldelectrons/nixos-config.git ~/.dotfiles
 ```
 
-To get the hardware configuration on a new system, either copy from =/etc/nixos/hardware-configuration.nix= or run:
+To get the hardware configuration on a new system, either copy from `/etc/nixos/hardware-configuration.nix` or run:
 ``` sh
 cd ~/.dotfiles
 sudo nixos-generate-config --show-hardware-config > system/hardware-configuration.nix
 ```
 
-Also, if you have a differently named user account than my default (=emmet=), you /must/ update the following lines in the let binding near the top of the [[./flake.nix][flake.nix]]:
+Also, if you have a differently named user account than my default (=emmet=), you /must/ update the following lines in the let binding near the top of the [flake.nix](./flake.nix):
 ``` nix
 ...
 let

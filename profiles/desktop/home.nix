@@ -27,9 +27,10 @@
               ../../user/app/terminal/kitty.nix
               ../../user/app/browser/librewolf.nix
               ../../user/app/virtualization/virtualization.nix
-              #../../user/app/freecad/freecad.nix
+              ../../user/app/cadcam/freecad-realthunder.nix
               ../../user/hardware/bluetooth.nix # Bluetooth
             ];
+
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
@@ -56,10 +57,23 @@
     mediainfo
     libmediainfo
     soundconverter
-    prusa-slicer
 
     # dev packages
     libffi zlib
+
+    # games
+    # playonlinux
+
+    # cadcam
+    freecad
+    prusa-slicer
+    lightburn
+    meshlab
+    fstl
+
+    # embedded
+    # stlink
+    # stlink-gui
 
   ];
 

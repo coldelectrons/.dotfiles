@@ -5,8 +5,10 @@ in
   environment.systemPackages = with pkgs; [
     protontricks
     lighthouse-steamvr
+    protonup-ng
+    protonup-qt
+    proton-caller
   ];
-    # Games
 
   nixpkgs.config = {
     allowUnfree = true;

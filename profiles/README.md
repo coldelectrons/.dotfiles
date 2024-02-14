@@ -5,9 +5,7 @@ Each profile directory contains a `configuration.nix` for system-level configura
 Setting the `profile` variable in my flake will automatically source the correct `configuration.nix` and `home.nix`.
 
 Current profiles I have available are:
-- laptop - What I would run on a personal laptop*
-- desktop - What I would run on a personal desktop*
-- compute - What I would run on a photogrammetry workstation.
+- desktop - What I would run on a personal desktop - wm, messaging, cad, games, dev
 
-*My laptop/desktop profiles are actually functionally identical (the laptop profile is actually imported into the desktop profile)!
-The only difference between them is that my desktop profile has a few extra things like gaming and CAD apps.
+I do not plan on making heirarchal profiles, because currently the complexity isn't worth it.
+For now, copy an existing profile to a new name and edit it.

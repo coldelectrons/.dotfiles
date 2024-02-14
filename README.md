@@ -1,6 +1,6 @@
 # NixOS Config
 
-** What is this repository?
+## What is this repository?
 These are my dotfiles (configuration files) for my NixOS setup(s).
 These are based heavily on librephoenix and others.
 
@@ -22,7 +22,7 @@ I have my modules separated into two groups:
 
 More detailed information on these specific modules are in the system directory and user directory respectively.
 
-** Profiles
+## Profiles
 I separate my configurations into [profiles](./profiles) (essentially system templates), i.e:
 - [desktop](./profiles/desktop) - What I would run on a personal desktop
 - [laptop](./profiles/laptop) - What I would run on a personal laptop

@@ -15,7 +15,7 @@
       system = "x86_64-linux"; # system arch
       hostname = "nixos"; # hostname
       profile = "desktop"; # select a profile defined from my profiles directory
-      timezone = "America/Eastern"; # select timezone
+      timezone = "America/New_York"; # select timezone
       locale = "en_US.UTF-8"; # select locale
     };
 

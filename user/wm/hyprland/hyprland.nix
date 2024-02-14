@@ -37,14 +37,14 @@
       exec-once = waybar
 
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
-      exec-once = swayidle -w timeout 90 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${config.programs.swaylock.package}/bin/swaylock -f"
+      exec-once = swayidle -w timeout 3600 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${config.programs.swaylock.package}/bin/swaylock -f"
       exec-once = obs-notification-mute-daemon
 
       exec = ~/.swaybg-stylix
 
       general {
         layout = master
-        cursor_inactive_timeout = 30
+        cursor_inactive_timeout = 3600
         border_size = 4
         no_cursor_warps = false
         col.active_border = 0xff'' + config.lib.stylix.colors.base08 + ''

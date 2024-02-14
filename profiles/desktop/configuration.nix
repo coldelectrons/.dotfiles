@@ -93,7 +93,8 @@
     vim neovim nano
     mc yazi
     wget curl
-    zsh powerlevel10k
+    zsh
+    zsh-powerlevel10k
     git
     cryptsetup
     home-manager
@@ -116,7 +117,6 @@
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
-  programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
   programs.yazi.enable = true;
 

@@ -6,4 +6,4 @@ export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/thomas/.cache/lvim"}"
 
 export LUNARVIM_BASE_DIR="${LUNARVIM_BASE_DIR:-"/home/thomas/.local/share/lunarvim/lvim"}"
 
-exec -a lvim ~/.local/bin/neovide.AppImage -- -u "$LUNARVIM_BASE_DIR/init.lua" "$@"
+exec -a lvim neovide -- -u "$LUNARVIM_BASE_DIR/init.lua" "$@"

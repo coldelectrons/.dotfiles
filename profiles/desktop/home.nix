@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ config, pkgs, stylix, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -8,9 +8,27 @@
 
   programs.home-manager.enable = true;
 
-  imports = [ ../laptop/home.nix # Personal is essentially work system + games
-              ../../user/app/games/games.nix # Various videogame apps
-              #../../user/app/cad/cad.nix # Various CAD apps
+  imports = [ 
+              stylix.homeManagerModules.stylix
+              (./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix") # My window manager selected from flake
+              ../../user/shell/sh.nix # My zsh and bash config
+              ../../user/shell/cli-collection.nix # Useful CLI apps
+              ../../user/app/ranger/ranger.nix # My ranger file manager config
+              (./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix") # My default browser selected from flake
+              ../../user/app/git/git.nix
+              ../../user/app/flatpak/flatpak.nix # Flatpaks
+              ../../user/style/stylix.nix # Styling and themes for my apps
+              ../../user/lang/cc/cc.nix # C and C++ tools
+              ../../user/lang/python/python.nix
+              ../../user/lang/python/python-packages.nix
+              ../../user/lang/rust/rust.nix
+              # ../../user/lang/godot/godot.nix # Game development
+              ../../user/hardware/bluetooth.nix # Bluetooth
+              ../../user/app/terminal/kitty.nix
+              ../../user/app/browser/librewolf.nix
+              ../../user/app/virtualization/virtualization.nix
+              #../../user/app/freecad/freecad.nix
+              ../../user/hardware/bluetooth.nix # Bluetooth
             ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
@@ -19,25 +37,68 @@
     # Core
     zsh
     alacritty
-    librewolf
+    kitty
     thunderbird
     dmenu
     rofi
     syncthing
-    lvim
+    lunarvim
     neovim-unwrapped
     neovide
 
     # Media
-    smtube
+    krita
+    inkscape
+    yt-dlp
+    vlc
+    mpv
+    ffmpeg
+    mediainfo
+    libmediainfo
+    soundconverter
+    prusa-slicer
+
+    # dev packages
+    libffi zlib
+
   ];
+
+  # services.syncthing.enable = true;
 
   xdg.enable = true;
   xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    music = "${config.home.homeDirectory}/Media/Music";
+    videos = "${config.home.homeDirectory}/Media/Videos";
+    pictures = "${config.home.homeDirectory}/Media/Pictures";
+    templates = "${config.home.homeDirectory}/Templates";
+    download = "${config.home.homeDirectory}/Downloads";
+    documents = "${config.home.homeDirectory}/Documents";
+    desktop = null;
+    publicShare = null;
     extraConfig = {
       XDG_GAME_DIR = "${config.home.homeDirectory}/Media/Games";
       XDG_GAME_SAVE_DIR = "${config.home.homeDirectory}/Media/Game Saves";
+      XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
+      XDG_ARCHIVE_DIR = "${config.home.homeDirectory}/Archive";
+      XDG_VM_DIR = "${config.home.homeDirectory}/Machines";
+      XDG_ORG_DIR = "${config.home.homeDirectory}/Org";
+      XDG_PODCAST_DIR = "${config.home.homeDirectory}/Media/Podcasts";
+      XDG_BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
     };
+  };
+  xdg.mime.enable = true;
+  xdg.mimeApps.enable = true;
+  xdg.mimeApps.associations.added = {
+    # "application/octet-stream" = "flstudio.desktop;";
+  };
+
+  home.sessionVariables = {
+    EDITOR = userSettings.editor;
+    SPAWNEDITOR = userSettings.spawnEditor;
+    TERM = userSettings.term;
+    BROWSER = userSettings.browser;
   };
 
 }

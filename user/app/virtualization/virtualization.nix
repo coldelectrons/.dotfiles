@@ -11,6 +11,10 @@
     lxc
     swtpm
     bottles
+    wine
+    wine-staging
+    wineWayland
+    winetricks
 
     # Filesystems
     dosfstools

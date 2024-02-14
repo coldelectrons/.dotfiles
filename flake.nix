@@ -1,14 +1,18 @@
 {
-  description = "Flake of LibrePhoenix";
+  description = "Flake of coldelectrons";
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, 
-              stylix, blocklist-hosts, rust-overlay, hyprland-plugins,
+  outputs = { self, nixpkgs, nixpkgs-stable,
+              home-manager, 
+              stylix,
+      	      blocklist-hosts,
+              rust-overlay,
+              hyprland-plugins,
               ... }@inputs:
   let
     # ---- SYSTEM SETTINGS ---- #
     systemSettings = {
       system = "x86_64-linux"; # system arch
-      hostname = "anachronox"; # hostname
+      hostname = "nixos"; # hostname
       profile = "desktop"; # select a profile defined from my profiles directory
       timezone = "America/Eastern"; # select timezone
       locale = "en_US.UTF-8"; # select locale
@@ -26,7 +30,7 @@
       wmType = if (wm == "hyprland") then "wayland" else "x11";
       browser = "librewolf"; # Default browser; must select one from ./user/app/browser/
       defaultRoamDir = "Personal.p"; # Default org roam directory relative to ~/Org
-      term = "alacritty"; # Default terminal command;
+      term = "kitty"; # Default terminal command;
       font = "Intel One Mono"; # Selected font
       fontPkg = pkgs.intel-one-mono; # Font package
       editor = "nvim"; # Default editor;
@@ -49,18 +53,27 @@
                 ];
     };
 
+
     # configure pkgs
     pkgs = import nixpkgs-patched {
       system = systemSettings.system;
       config = { allowUnfree = true;
-                 allowUnfreePredicate = (_: true); };
+                 allowUnfreePredicate = (_: true);
+                 permittedInsecurePackages = [
+                   "qtwebkit-5.212.0-alpha4"
+                 ];
+        };
       overlays = [ rust-overlay.overlays.default ];
     };
 
     pkgs-stable = import nixpkgs-stable {
       system = systemSettings.system;
       config = { allowUnfree = true;
-                 allowUnfreePredicate = (_: true); };
+                 allowUnfreePredicate = (_: true);
+                 permittedInsecurePackages = [
+                   "qtwebkit-5.212.0-alpha4"
+                 ];
+        };
       overlays = [ rust-overlay.overlays.default ];
     };
 
@@ -72,16 +85,17 @@
       user = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ (./. + "/profiles"+("/"+systemSettings.profile)+"/home.nix") # load home.nix from selected PROFILE
-                    #  inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
+                      inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
                     ];
           extraSpecialArgs = {
             # pass config variables from above
             inherit pkgs-stable;
             inherit systemSettings;
             inherit userSettings;
-            #inherit (inputs) nix-flatpak;
+            inherit (inputs) nix-flatpak;
             inherit (inputs) stylix;
             inherit (inputs) hyprland-plugins;
+            inherit (inputs) freecad-realthunder;
           };
       };
     };
@@ -105,13 +119,14 @@
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
+    # home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:danth/stylix";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
 
     blocklist-hosts = {
       url = "github:StevenBlack/hosts";
@@ -121,6 +136,11 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       flake = false;
+    };
+    
+    freecad-realthunder = {
+      url = "github:sheyll/freecad-realthunder-nix-flake";
+      flake = true;
     };
   };
 }

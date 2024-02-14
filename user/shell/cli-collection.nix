@@ -4,6 +4,7 @@
   # Collection of useful CLI apps
   home.packages = with pkgs; [
     # Command Line
+    vim 
     disfetch neofetch lolcat cowsay onefetch starfetch
     cava
     gnugrep gnused
@@ -21,12 +22,10 @@
     fzf
     pandoc
     pciutils
-    (pkgs.callPackage ../pkgs/smartcalc.nix { })
-    (pkgs.writeShellScriptBin "sc" ''smartcalc'')
+    mc
     #(pkgs.callPackage ../pkgs/ytsub.nix { })
     #(pkgs.callPackage ../pkgs/russ.nix { })
     #(pkgs.python3Packages.callPackage ../pkgs/impressive.nix { })
-    (pkgs.callPackage ../pkgs/pokemon-colorscripts.nix { })
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
@@ -37,11 +36,10 @@
           nmcli n on
       fi
     '')
-    vim neovim
   ];
 
   imports = [
-    ../bin/phoenix.nix # My nix command wrapper
-    ../bin/ytsub-wrappers.nix # My ytsub wrapper
+    # ../bin/phoenix.nix # My nix command wrapper
+    # ../bin/ytsub-wrappers.nix # My ytsub wrapper
   ];
 }

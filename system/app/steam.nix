@@ -1,7 +1,21 @@
-{ pkgs, ... }:
-
+{ config, pkgs, pkgs-stable, ... }:
+let
+in
 {
-  hardware.opengl.driSupport32Bit = true;
+  environment.systemPackages = with pkgs; [
+    protontricks
+    lighthouse-steamvr
+  ];
+    # Games
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
+
+  # To get steam to import into gamehub, first install it as a flatpak, then
+  # Set steam directory to ~/.var/app/com.valvesoftware.Steam/.steam
+
   programs.steam.enable = true;
-  environment.systemPackages = [ pkgs.steam ];
+
 }

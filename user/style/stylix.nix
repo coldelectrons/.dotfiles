@@ -1,20 +1,31 @@
 { config, lib, pkgs, userSettings, ... }:
 
 let
-  themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
-  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
-  backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
-  backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+  # themePath = "../../../themes"+("/"+userSettings.theme+"/"+userSettings.theme)+".yaml";
+  # themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+  # backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
+  # backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+  # themeConfig = {
+  #       modules = [ 
+  #                   (./. + "/themes"+("/"+systemSettings.theme)+"/theme.nix") # load theme.nix from selected theme
+  #                 ];
+  #   };
+  # };
 in
 {
+  imports = [
+    (./. + "../../../themes"+("/"+userSettings.theme+"/theme.nix")) # load theme.nix from selected theme
+  ];
   home.file.".currenttheme".text = userSettings.theme;
   stylix.autoEnable = false;
-  stylix.polarity = themePolarity;
-  stylix.image = pkgs.fetchurl {
-    url = backgroundUrl;
-    sha256 = backgroundSha256;
-  };
-  stylix.base16Scheme = ./. + themePath;
+  # stylix.polarity = themePolarity;
+  # stylix.image = pkgs.fetchurl {
+  #   url = backgroundUrl;
+  #   # sha256 = backgroundSha256;
+  # };
+  # stylix.image = ./. + "../../../wallpapers"+("/"+backgroundUrl);
+  # stylix.image = ../../wallpapers/dark_blue_nebula.png;
+  # stylix.base16Scheme = ./. + themePath;
 
   stylix.fonts = {
     monospace = {
@@ -41,6 +52,7 @@ in
     };
   };
 
+  stylix.targets.bemenu.enable = false;
   stylix.targets.alacritty.enable = false;
   programs.alacritty.settings = {
     colors = {

@@ -34,9 +34,7 @@
       exec-once = nm-applet
       exec-once = blueman-applet
       exec-once = GOMAXPROCS=1 syncthing --no-browser
-      exec-once = protonmail-bridge --noninteractive
       exec-once = waybar
-      exec-once = emacs --daemon
 
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
       exec-once = swayidle -w timeout 90 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${config.programs.swaylock.package}/bin/swaylock -f"
@@ -258,12 +256,13 @@
 
     '';
     xwayland = { enable = true; };
-    systemdIntegration = true;
+    systemd.enable = true;
   };
 
   home.packages = with pkgs; [
     alacritty
     kitty
+    bemenu
     feh
     killall
     polkit_gnome
@@ -311,10 +310,8 @@
         if pgrep -x .obs-wrapped > /dev/null;
           then
             pkill -STOP fnott;
-            #emacsclient --eval "(org-yaap-mode 0)";
           else
             pkill -CONT fnott;
-            #emacsclient --eval "(if (not org-yaap-mode) (org-yaap-mode 1))";
         fi
         sleep 10;
       done

@@ -28,6 +28,7 @@
               ../../user/app/browser/librewolf.nix
               ../../user/app/virtualization/virtualization.nix
               ../../user/app/cadcam/freecad-realthunder.nix
+              ../../user/app/lunarvim/lunarvim.nix
               ../../user/hardware/bluetooth.nix # Bluetooth
             ];
 
@@ -43,9 +44,7 @@
     dmenu
     rofi
     syncthing
-    lunarvim
     neovim-unwrapped
-    neovide
 
     # Media
     krita

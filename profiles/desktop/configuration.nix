@@ -91,12 +91,14 @@
   # System packages
   environment.systemPackages = with pkgs; [
     vim neovim nano
-    mc yazi
+    mc
     wget curl
     zsh
     zsh-powerlevel10k
     git
     cryptsetup
+    tmux mosh screen
+    alacritty kitty # included here so xterm info is system-wide
     home-manager
 
     #messaging

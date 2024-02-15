@@ -298,7 +298,6 @@
     pavucontrol
     pamixer
     termusic
-    uberzug
     (pkgs.writeScriptBin "keybind" ''
       #!/bin/sh
       config_file=~/.config/hypr/hyprland.conf

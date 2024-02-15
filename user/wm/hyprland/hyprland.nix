@@ -35,6 +35,7 @@
       exec-once = blueman-applet
       exec-once = GOMAXPROCS=1 syncthing --no-browser
       exec-once = waybar
+      exec-once = wl-clipboard
 
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
       exec-once = swayidle -w timeout 3600 '${config.programs.swaylock.package}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${config.programs.swaylock.package}/bin/swaylock -f"
@@ -77,27 +78,29 @@
        #  }
        #}
 
-       bind=SUPER,SPACE,fullscreen,1
+       bind=SUPER,F1,exec,keybind
+
+       bind=SUPER,SPACE,fullscreen,1 # fullscreen
        bind=ALT,TAB,cyclenext
        bind=ALT,TAB,bringactivetotop
        bind=ALTSHIFT,TAB,cyclenext,prev
        bind=ALTSHIFT,TAB,bringactivetotop
        bind=SUPER,Y,workspaceopt,allfloat
 
-       bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
-       bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
+       # bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
+       # bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
 
        bind=SUPER,RETURN,exec,'' + userSettings.term + ''
 
        bind=SUPER,A,exec,'' + userSettings.spawnEditor + ''
 
-       bind=SUPER,S,exec,'' + userSettings.browser + ''
+       bind=SUPER,W,exec,'' + userSettings.browser + ''
 
-       bind=SUPERCTRL,S,exec,container-open # qutebrowser only
+       # bind=SUPERCTRL,S,exec,container-open # qutebrowser only
 
        bind=SUPERCTRL,R,exec,killall .waybar-wrapped && waybar & disown
 
-       bind=SUPER,code:47,exec,fuzzel
+       bind=SUPER,code:49,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
        bind=SUPERSHIFT,X,exec,fnottctl dismiss all
        bind=SUPER,Q,killactive
@@ -105,7 +108,7 @@
        bindm=SUPER,mouse:272,movewindow
        bindm=SUPER,mouse:273,resizewindow
        bind=SUPER,T,togglefloating
-       bind=SUPER,G,exec,hyprworkspace 9; pegasus-fe;
+       # bind=SUPER,G,exec,hyprworkspace 9; pegasus-fe;
 
        bind=,code:107,exec,grim -g "$(slurp)"
        bind=SHIFT,code:107,exec,grim -g "$(slurp -o)"
@@ -162,7 +165,7 @@
 
        bind=SUPER,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
        bind=SUPER,F,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop
-       bind=SUPER,N,exec,pypr toggle musikcube && hyprctl dispatch bringactivetotop
+       bind=SUPER,N,exec,pypr toggle termusic && hyprctl dispatch bringactivetotop
        bind=SUPER,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop
        bind=SUPER,E,exec,pypr toggle geary && hyprctl dispatch bringactivetotop
        bind=SUPER,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
@@ -199,7 +202,7 @@
        windowrulev2 = opacity 0.80,title:^(New Tab - Brave)$
        windowrulev2 = opacity 0.65,title:^(My Local Dashboard Awesome Homepage - qutebrowser)$
        windowrulev2 = opacity 0.65,title:\[.*\] - My Local Dashboard Awesome Homepage
-       windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
+       # windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
        windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
 
        layerrule = blur,waybar
@@ -211,13 +214,13 @@
        bind=SUPERCTRL,left,workspace,-1
 
        bind=SUPER,I,exec,networkmanager_dmenu
-       bind=SUPER,P,exec,keepmenu
-       bind=SUPERSHIFT,P,exec,hyprprofile-dmenu
+       # bind=SUPER,P,exec,keepmenu
+       # bind=SUPERSHIFT,P,exec,hyprprofile-dmenu
 
        # 3 monitor setup
-       monitor=eDP-1,1920x1080,1000x1200,1
-       monitor=HDMI-A-1,1920x1200,1920x0,1
-       monitor=DP-1,1920x1200,0x0,1
+       # monitor=eDP-1,1920x1080,1000x1200,1
+       # monitor=HDMI-A-1,1920x1200,1920x0,1
+       # monitor=DP-1,1920x1200,0x0,1
 
        # 2 monitor setup
        #monitor=eDP-1,1920x1080,1920x0,1
@@ -260,9 +263,10 @@
   };
 
   home.packages = with pkgs; [
-    alacritty
-    kitty
+    alacritty kitty
     bemenu
+    rofi
+    dunst
     feh
     killall
     polkit_gnome
@@ -279,7 +283,7 @@
     swaybg
     fnott
     fuzzel
-    keepmenu
+    # keepmenu
     pinentry-gnome
     wev
     grim
@@ -293,6 +297,15 @@
     wlsunset
     pavucontrol
     pamixer
+    termusic
+    uberzug
+    (pkgs.writeScriptBin "keybind" ''
+      #!/bin/sh
+      config_file=~/.config/hypr/hyprland.conf
+      keybinds=$(grep -oP '(?<=bind = ).*' $config_file)
+      keybinds=$(echo "$keybinds" | sed 's/,\([^,]*\)$/ = \1/' | sed 's/, exec//g' | sed 's/^,//g')
+      rofi -dmenu -p "Keybinds" -theme ~/.config/rofi/themes/catpuccin-mocha.rasi <<< "$keybinds"
+    '')
     (pkgs.writeScriptBin "sct" ''
       #!/bin/sh
       killall wlsunset &> /dev/null;
@@ -378,12 +391,12 @@
           "command": "kitty --class scratchpad -e ranger",
           "margin": 50
         },
-        "musikcube": {
-          "command": "alacritty --class scratchpad -e musikcube",
+        "termusic": {
+          "command": "kitty --class scratchpad -e termusic",
           "margin": 50
         },
         "btm": {
-          "command": "alacritty --class scratchpad -e btm",
+          "command": "kitty --class scratchpad -e btm",
           "margin": 50
         },
         "geary": {
@@ -446,7 +459,7 @@
             "9" = "󱎓";
             "scratch_term" = "_";
             "scratch_ranger" = "_󰴉";
-            "scratch_musikcube" = "_";
+            "scratch_termusic" = "_";
             "scratch_btm" = "_";
             "scratch_geary" = "_";
             "scratch_pavucontrol" = "_󰍰";

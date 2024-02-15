@@ -8,5 +8,5 @@
   programs.kitty.settings = {
     background_opacity = lib.mkForce "0.65";
   };
-  programs.kitty.shellIntegration = "nosudo";
+  programs.kitty.shellIntegration = ["nosudo"];
 }

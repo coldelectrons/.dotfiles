@@ -103,6 +103,7 @@
 
     #messaging
     signal-desktop
+    dorion
 
     # util
     bitwarden

@@ -12,6 +12,7 @@
       ../../system/hardware/power.nix # Power management
       ../../system/hardware/time.nix # Network time sync
       ../../system/hardware/opengl.nix
+      ../../system/hardware/spacenav.nix
       ../../system/hardware/printing.nix
       ../../system/hardware/bluetooth.nix
       (./. + "../../../system/wm"+("/"+userSettings.wm)+".nix") # My window manager

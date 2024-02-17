@@ -29,6 +29,7 @@
               ../../user/app/virtualization/virtualization.nix
               ../../user/app/cadcam/freecad-realthunder.nix
               ../../user/app/lunarvim/lunarvim.nix
+              ../../user/app/cadcam/eda.nix
               ../../user/hardware/bluetooth.nix # Bluetooth
             ];
 
@@ -37,10 +38,21 @@
 
   home.packages = with pkgs; [
     # Core
-    zsh
+    zsh zellij
+    bat
+    bat-extras.batman
+    bat-extras.batpipe
+    bat-extras.batgrep
+    bat-extras.batdiff
+    bat-extras.batwatch
+    bat-extras.prettybat
     alacritty
     kitty
+    yazi
+    eza
+    pipx
     thunderbird
+    neomutt
     dmenu
     rofi
     syncthing
@@ -50,6 +62,7 @@
     krita
     inkscape
     yt-dlp
+    youtube-tui
     vlc
     mpv
     ffmpeg

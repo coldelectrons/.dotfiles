@@ -202,8 +202,18 @@
        windowrulev2 = opacity 0.80,title:^(New Tab - Brave)$
        windowrulev2 = opacity 0.65,title:^(My Local Dashboard Awesome Homepage - qutebrowser)$
        windowrulev2 = opacity 0.65,title:\[.*\] - My Local Dashboard Awesome Homepage
-       # windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
        windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
+
+       # Steam
+       windowrulev2 = size 800 600, class:^(steam), title:^(Special Offers)$
+       windowrulev2 = center, class:^(steam), title:^(Special Offers)$
+       windowrulev2 = workspace 8 silent, class:^(steam)$, title:^(Steam)$
+       # prevent Steam Friends list from intrusively tiling
+       windowrulev2 = float, class:^(steam)$, title:^(Friends List)$
+       # Steam menus disappearing on mouseover
+       windowrulev2 = stayfocused, class:^(steam)$, title:^()$
+       windowrulev2 = minsize 1 1, class:^(steam)$, title:^()$
+       
 
        layerrule = blur,waybar
 

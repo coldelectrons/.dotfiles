@@ -126,5 +126,6 @@
     TERM = userSettings.term;
     BROWSER = userSettings.browser;
   };
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
 }

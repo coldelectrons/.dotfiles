@@ -133,6 +133,13 @@
       pkgs.xdg-desktop-portal-gtk
     ];
   };
+  environment.extraInit = ''
+    # Do not want this in the environment. NixOS always sets it and does not
+    # provide any option not to, so I must unset it myself via the
+    # environment.extraInit option.
+    unset -v SSH_ASKPASS
+    unset -V GIT_ASKPASS
+  '';
 
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "23.11";

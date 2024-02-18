@@ -313,7 +313,7 @@
       config_file=~/.config/hypr/hyprland.conf
       keybinds=$(grep -oP '(?<=bind=).*' $config_file)
       keybinds=$(echo "$keybinds" | sed 's/,\([^,]*\)$/ = \1/' | sed 's/, exec//g' | sed 's/^,//g')
-      fuzzel -d -p "Keybinds" -theme ~/.config/rofi/themes/catpuccin-mocha.rasi <<< "$keybinds"
+      fuzzel -d -p "Keybinds" <<< "$keybinds"
     '')
     (pkgs.writeScriptBin "sct" ''
       #!/bin/sh

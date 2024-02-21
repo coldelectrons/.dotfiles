@@ -10,7 +10,7 @@
     #pcb-rnd??
     kicad
     kicadAddons.kikit
-    flatcam
+    #flatcam # broken bc of python39 and ipython
   ];
 
 }

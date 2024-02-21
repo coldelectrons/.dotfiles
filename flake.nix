@@ -140,7 +140,7 @@
     };
     
     freecad-realthunder = {
-      url = "github:sheyll/freecad-realthunder-nix-flake";
+      url = "github:coldelectrons/freecad-realthunder-nix-flake";
       flake = true;
     };
   };

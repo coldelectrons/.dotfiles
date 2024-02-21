@@ -1,4 +1,4 @@
-{ pkgs, userSettings, ... }:
+{ pkgs,  ... }:
 
 {
   home.packages = with pkgs; [
@@ -10,6 +10,7 @@
     #pcb-rnd??
     kicad
     kicadAddons.kikit
+    flatcam
   ];
 
 }

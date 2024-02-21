@@ -102,6 +102,11 @@
     alacritty kitty # included here so xterm info is system-wide
     home-manager
 
+    # other browsers
+    firefox-unwrapped
+    ungoogled-chromium
+    palemoon-bin
+
     #messaging
     signal-desktop
     dorion

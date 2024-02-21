@@ -143,7 +143,7 @@
     # provide any option not to, so I must unset it myself via the
     # environment.extraInit option.
     unset -v SSH_ASKPASS
-    unset -V GIT_ASKPASS
+    unset -v GIT_ASKPASS
   '';
 
   # It is ok to leave this unchanged for compatibility purposes

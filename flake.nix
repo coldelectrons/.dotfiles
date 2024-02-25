@@ -81,6 +81,10 @@
     # configure lib
     lib = nixpkgs.lib;
 
+    pkgs-local = import (/home/thomas/.nixpkgs-local) {
+      config.allowUnfree = true;
+    };
+
   in {
     homeConfigurations = {
       user = home-manager.lib.homeManagerConfiguration {
@@ -91,6 +95,7 @@
         extraSpecialArgs = {
           # pass config variables from above
           inherit pkgs-stable;
+          inherit pkgs-local;
           inherit systemSettings;
           inherit userSettings;
           inherit (inputs) nix-flatpak;

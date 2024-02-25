@@ -8,7 +8,7 @@
     pcb2gcode
     gerbv
     #pcb-rnd??
-    kicad-unstable
+    kicad
     kikit
     #flatcam # broken bc of python39 and ipython
   ];

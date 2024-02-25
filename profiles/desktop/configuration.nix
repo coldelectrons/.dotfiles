@@ -114,6 +114,7 @@
     # util
     bitwarden
     bitwarden-cli
+    appimage-run
 
     # games
     playonlinux

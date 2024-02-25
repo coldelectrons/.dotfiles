@@ -2,14 +2,14 @@
 
 {
   home.packages = with pkgs; [
-    lepton-eda
-    pcb
-    librepcb
+    #lepton-eda
+    #pcb
+    #librepcb
     pcb2gcode
     gerbv
     #pcb-rnd??
-    kicad
-    kicadAddons.kikit
+    kicad-unstable
+    kikit
     #flatcam # broken bc of python39 and ipython
   ];
 

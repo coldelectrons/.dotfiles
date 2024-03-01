@@ -22,5 +22,4 @@ in
       source = ./lvim-ide;
     };
   };
-  environment.localBinInPath = true;
 }

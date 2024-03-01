@@ -25,8 +25,8 @@
       name = "thomas"; # name/identifier
       email = "frithomas@gmail.com"; # email (used for certain configurations)
       dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-      theme = "uwunicorn-yt"; # selcted theme from my themes directory (./themes/)
-      wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
+      theme = "solarized-dark"; # selcted theme from my themes directory (./themes/)
+      wm = "plasma6"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
       # window manager type (hyprland or x11) translator
       wmType = if (wm == "hyprland") then "wayland" else "x11";
       browser = "librewolf"; # Default browser; must select one from ./user/app/browser/
@@ -72,7 +72,7 @@
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true);
                  permittedInsecurePackages = [
-                   "qtwebkit-5.212.0-alpha4"
+                   # "qtwebkit-5.212.0-alpha4"
                  ];
         };
       overlays = [ rust-overlay.overlays.default ];

@@ -3,10 +3,8 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable,
               home-manager, 
-              stylix,
       	      blocklist-hosts,
               rust-overlay,
-              hyprland-plugins,
               freecad-realthunder,
               ... }@inputs:
   let
@@ -25,12 +23,9 @@
       name = "thomas"; # name/identifier
       email = "frithomas@gmail.com"; # email (used for certain configurations)
       dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-      theme = "solarized-dark"; # selcted theme from my themes directory (./themes/)
       wm = "plasma6"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
-      # window manager type (hyprland or x11) translator
-      wmType = if (wm == "hyprland") then "wayland" else "x11";
+      wmType = "wayland";
       browser = "librewolf"; # Default browser; must select one from ./user/app/browser/
-      defaultRoamDir = "Personal.p"; # Default org roam directory relative to ~/Org
       term = "kitty"; # Default terminal command;
       font = "JetBrainsMono"; # Selected font
       fontPkg = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Inconsolata" "NerdFontsSymbolsOnly" "Hack" "SourceCodePro"]; }); # Font package
@@ -99,8 +94,6 @@
           inherit systemSettings;
           inherit userSettings;
           inherit (inputs) nix-flatpak;
-          inherit (inputs) stylix;
-          inherit (inputs) hyprland-plugins;
           inherit (inputs) freecad-realthunder;
         };
       };
@@ -113,7 +106,6 @@
           # pass config variables from above
           inherit systemSettings;
           inherit userSettings;
-          inherit (inputs) stylix;
           inherit (inputs) blocklist-hosts;
         };
       };
@@ -128,8 +120,6 @@
     # home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    stylix.url = "github:danth/stylix";
-
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
@@ -139,11 +129,6 @@
       flake = false;
     };
 
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      flake = false;
-    };
-    
     freecad-realthunder = {
       url = "github:coldelectrons/freecad-realthunder-nix-flake";
       flake = true;

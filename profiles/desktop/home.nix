@@ -1,4 +1,4 @@
-{ config, pkgs, stylix, userSettings, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -9,7 +9,6 @@
   programs.home-manager.enable = true;
 
   imports = [ 
-              stylix.homeManagerModules.stylix
               (./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix") # My window manager selected from flake
               ../../user/shell/sh.nix # My zsh and bash config
               ../../user/shell/cli-collection.nix # Useful CLI apps
@@ -17,7 +16,6 @@
               (./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix") # My default browser selected from flake
               ../../user/app/git/git.nix
               ../../user/app/flatpak/flatpak.nix # Flatpaks
-              ../../user/style/stylix.nix # Styling and themes for my apps
               ../../user/lang/cc/cc.nix # C and C++ tools
               ../../user/lang/python/python.nix
               ../../user/lang/python/python-packages.nix

@@ -26,7 +26,6 @@
       ../../system/security/sshd.nix
       # ../../system/security/openvpn.nix
       ../../system/security/automount.nix
-      ../../system/style/stylix.nix
       #../../system/hardware/openrgb.nix
       ../../system/app/gamemode.nix
       ../../system/app/steam.nix

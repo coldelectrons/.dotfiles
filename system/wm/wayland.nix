@@ -18,9 +18,9 @@
     xkb.layout = "us";
     xkb.variant = "";
     xkb.options = "caps:escape";
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+    # displayManager.gdm = {
+    #   enable = true;
+    #   wayland = true;
+    # };
   };
 }

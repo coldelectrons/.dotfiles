@@ -4,7 +4,7 @@
   # Fonts are nice to have
   fonts.packages = with pkgs; [
     # Fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "Inconsolata" "SymbolsOnly" "Hack" "SourceCodePro"]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "Inconsolata" "NerdFontsSymbolsOnly" "Hack" "SourceCodePro"]; })
     powerline
     inconsolata
     inconsolata-nerdfont

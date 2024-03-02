@@ -32,8 +32,8 @@
       browser = "librewolf"; # Default browser; must select one from ./user/app/browser/
       defaultRoamDir = "Personal.p"; # Default org roam directory relative to ~/Org
       term = "kitty"; # Default terminal command;
-      font = "Intel One Mono"; # Selected font
-      fontPkg = pkgs.intel-one-mono; # Font package
+      font = "JetBrainsMono"; # Selected font
+      fontPkg = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Inconsolata" "NerdFontsSymbolsOnly" "Hack" "SourceCodePro"]; }); # Font package
       editor = "nvim"; # Default editor;
       # editor spawning translator
       # generates a command that can be used to spawn editor inside a gui

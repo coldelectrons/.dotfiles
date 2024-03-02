@@ -121,6 +121,8 @@
     lutris
   ];
 
+  environment.localBinInPath = true;
+
   services.tailscale.enable = true;
 
   # I use zsh btw

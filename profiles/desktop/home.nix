@@ -127,6 +127,5 @@
     BROWSER = userSettings.browser;
   };
   home.sessionPath = [ "$HOME/.local/bin" ];
-  environment.localBinInPath = true;
 
 }

@@ -124,7 +124,8 @@
 
   services.tailscale.enable = true;
 
-  chaotic.mesa-git.enable = true;
+  # Do we really need mesa-git??? Because it breaks kitty
+  # chaotic.mesa-git.enable = true;
 
   # I use zsh btw
   environment.shells = with pkgs; [ zsh ];

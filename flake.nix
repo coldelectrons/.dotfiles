@@ -85,7 +85,8 @@
     homeConfigurations = {
       user = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ (./. + "/profiles"+("/"+systemSettings.profile)+"/home.nix") # load home.nix from selected PROFILE
+        modules = [ 
+                    ./home.nix
                     inputs.nix-flatpak.homeManagerModules.nix-flatpak # Declarative flatpaks
                   ];
         extraSpecialArgs = {
@@ -103,7 +104,7 @@
       system = lib.nixosSystem {
         system = systemSettings.system;
         modules = [ 
-          (./. + "/profiles"+("/"+systemSettings.profile)+"/configuration.nix") # load configuration.nix from selected PROFILE
+          ./configuration.nix
           chaotic.nixosModules.default
         ];
         specialArgs = {
@@ -122,7 +123,6 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/master";
-    # home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     rust-overlay.url = "github:oxalica/rust-overlay";

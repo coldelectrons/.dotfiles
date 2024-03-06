@@ -124,6 +124,8 @@
 
   services.tailscale.enable = true;
 
+  chaotic.mesa-git.enable = true;
+
   # I use zsh btw
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;

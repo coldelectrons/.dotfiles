@@ -6,6 +6,7 @@
       	      blocklist-hosts,
               rust-overlay,
               freecad-realthunder,
+              chaotic,
               ... }@inputs:
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -101,7 +102,10 @@
     nixosConfigurations = {
       system = lib.nixosSystem {
         system = systemSettings.system;
-        modules = [ (./. + "/profiles"+("/"+systemSettings.profile)+"/configuration.nix") ]; # load configuration.nix from selected PROFILE
+        modules = [ 
+          (./. + "/profiles"+("/"+systemSettings.profile)+"/configuration.nix") # load configuration.nix from selected PROFILE
+          chaotic.nixosModules.default
+        ];
         specialArgs = {
           # pass config variables from above
           inherit systemSettings;
@@ -115,6 +119,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/master";
     # home-manager.url = "github:nix-community/home-manager/release-23.11";
@@ -134,4 +139,4 @@
       flake = true;
     };
   };
-}
+

@@ -9,26 +9,26 @@
   programs.home-manager.enable = true;
 
   imports = [ 
-              (./. + "../../../user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix") # My window manager selected from flake
-              ../../user/shell/sh.nix # My zsh and bash config
-              ../../user/shell/cli-collection.nix # Useful CLI apps
-              ../../user/app/ranger/ranger.nix # My ranger file manager config
-              (./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix") # My default browser selected from flake
-              ../../user/app/git/git.nix
-              ../../user/app/flatpak/flatpak.nix # Flatpaks
-              ../../user/lang/cc/cc.nix # C and C++ tools
-              ../../user/lang/python/python.nix
-              ../../user/lang/python/python-packages.nix
-              # ../../user/lang/rust/rust.nix
-              # ../../user/lang/godot/godot.nix # Game development
-              ../../user/hardware/bluetooth.nix # Bluetooth
-              ../../user/app/terminal/kitty.nix
-              ../../user/app/browser/librewolf.nix
-              ../../user/app/virtualization/virtualization.nix
-              ../../user/app/cadcam/freecad-realthunder.nix
-              ../../user/app/lunarvim/lunarvim.nix
-              # ../../user/app/cadcam/eda.nix
-              ../../user/hardware/bluetooth.nix # Bluetooth
+              (./. + "/user/wm"+("/"+userSettings.wm+"/"+userSettings.wm)+".nix") # My window manager selected from flake
+              ./user/shell/sh.nix # My zsh and bash config
+              ./user/shell/cli-collection.nix # Useful CLI apps
+              ./user/app/ranger/ranger.nix # My ranger file manager config
+              (./. + "/user/app/browser"+("/"+userSettings.browser)+".nix") # My default browser selected from flake
+              ./user/app/git/git.nix
+              ./user/app/flatpak/flatpak.nix # Flatpaks
+              ./user/lang/cc/cc.nix # C and C++ tools
+              ./user/lang/python/python.nix
+              ./user/lang/python/python-packages.nix
+              # ./user/lang/rust/rust.nix
+              # ./user/lang/godot/godot.nix # Game development
+              ./user/hardware/bluetooth.nix # Bluetooth
+              ./user/app/terminal/kitty.nix
+              ./user/app/browser/librewolf.nix
+              ./user/app/virtualization/virtualization.nix
+              ./user/app/cadcam/freecad-realthunder.nix
+              ./user/app/lunarvim/lunarvim.nix
+              # ./user/app/cadcam/eda.nix
+              ./user/hardware/bluetooth.nix # Bluetooth
             ];
 
 
@@ -107,7 +107,6 @@
       XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
       XDG_ARCHIVE_DIR = "${config.home.homeDirectory}/Archive";
       XDG_VM_DIR = "${config.home.homeDirectory}/Machines";
-      XDG_ORG_DIR = "${config.home.homeDirectory}/Org";
       XDG_PODCAST_DIR = "${config.home.homeDirectory}/Media/Podcasts";
       XDG_BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
     };

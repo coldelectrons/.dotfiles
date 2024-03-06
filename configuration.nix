@@ -6,30 +6,30 @@
 {
   imports =
     [ 
-      ../../hardware-configuration.nix
-      ../../system/hardware/systemd.nix # systemd config
-      ../../system/hardware/kernel.nix # Kernel config
-      ../../system/hardware/power.nix # Power management
-      ../../system/hardware/time.nix # Network time sync
-      ../../system/hardware/opengl.nix
-      ../../system/hardware/spacenav.nix
-      ../../system/hardware/printing.nix
-      ../../system/hardware/bluetooth.nix
-      (./. + "../../../system/wm"+("/"+userSettings.wm)+".nix") # My window manager
-      ../../system/app/flatpak.nix
-      ../../system/app/virtualization.nix
-      ../../system/security/doas.nix
-      ../../system/security/gpg.nix
-      ../../system/security/blocklist.nix
-      ../../system/security/firewall.nix
-      ../../system/security/firejail.nix
-      ../../system/security/sshd.nix
-      # ../../system/security/openvpn.nix
-      ../../system/security/automount.nix
-      #../../system/hardware/openrgb.nix
-      ../../system/app/gamemode.nix
-      ../../system/app/steam.nix
-      #../../system/app/prismlauncher.nix
+      ./hardware-configuration.nix
+      ./system/hardware/systemd.nix # systemd config
+      ./system/hardware/kernel.nix # Kernel config
+      ./system/hardware/power.nix # Power management
+      ./system/hardware/time.nix # Network time sync
+      ./system/hardware/opengl.nix
+      ./system/hardware/spacenav.nix
+      ./system/hardware/printing.nix
+      ./system/hardware/bluetooth.nix
+      (./. + "/system/wm"+("/"+userSettings.wm)+".nix") # My window manager
+      ./system/app/flatpak.nix
+      ./system/app/virtualization.nix
+      ./system/security/doas.nix
+      ./system/security/gpg.nix
+      ./system/security/blocklist.nix
+      ./system/security/firewall.nix
+      ./system/security/firejail.nix
+      ./system/security/sshd.nix
+      # ./system/security/openvpn.nix
+      ./system/security/automount.nix
+      #./system/hardware/openrgb.nix
+      ./system/app/gamemode.nix
+      ./system/app/steam.nix
+      #./system/app/prismlauncher.nix
   ];
 
   # Fix nix path
@@ -152,6 +152,5 @@
 
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "23.11";
-
 
 }

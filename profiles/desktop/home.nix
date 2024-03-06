@@ -19,7 +19,7 @@
               ../../user/lang/cc/cc.nix # C and C++ tools
               ../../user/lang/python/python.nix
               ../../user/lang/python/python-packages.nix
-              ../../user/lang/rust/rust.nix
+              # ../../user/lang/rust/rust.nix
               # ../../user/lang/godot/godot.nix # Game development
               ../../user/hardware/bluetooth.nix # Bluetooth
               ../../user/app/terminal/kitty.nix
@@ -27,7 +27,7 @@
               ../../user/app/virtualization/virtualization.nix
               ../../user/app/cadcam/freecad-realthunder.nix
               ../../user/app/lunarvim/lunarvim.nix
-              ../../user/app/cadcam/eda.nix
+              # ../../user/app/cadcam/eda.nix
               ../../user/hardware/bluetooth.nix # Bluetooth
             ];
 
@@ -37,16 +37,16 @@
   home.packages = with pkgs; [
     # Core
     zsh zellij
-    bat
-    bat-extras.batman
-    bat-extras.batpipe
-    bat-extras.batgrep
-    bat-extras.batdiff
-    bat-extras.batwatch
-    bat-extras.prettybat
+    # bat
+    # bat-extras.batman
+    # bat-extras.batpipe
+    # bat-extras.batgrep
+    # bat-extras.batdiff
+    # bat-extras.batwatch
+    # bat-extras.prettybat
     alacritty
     kitty
-    yazi
+    # yazi
     eza
     pipx
     thunderbird
@@ -75,7 +75,7 @@
     # playonlinux
 
     # cadcam
-    freecad
+    # freecad
     prusa-slicer
     lightburn
     meshlab

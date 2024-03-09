@@ -71,20 +71,14 @@
     # dev packages
     libffi zlib
 
-    # games
-    # playonlinux
-
-    # cadcam
-    # freecad
     prusa-slicer
     lightburn
     meshlab
     fstl
+    obsidian
+    obsidian-export
 
-    # embedded
-    # stlink
-    # stlink-gui
-
+    lact # for amd gpus
   ];
 
   # services.syncthing.enable = true;

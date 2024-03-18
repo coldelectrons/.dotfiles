@@ -371,18 +371,6 @@ lvim.plugins = {
 		-- vim.cmd [[packadd telescope.nvim]]
 		-- end,
 	},
-	-- {
-	--   "zbirenbaum/copilot.lua",
-	--   cmd = "Copilot",
-	--   event = "InsertEnter",
-	-- },
-	-- {
-	--   "zbirenbaum/copilot-cmp",
-	--   after = { "copilot.lua" },
-	--   config = function()
-	--     require("copilot_cmp").setup()
-	--   end,
-	-- },
 	{ "Vigemus/iron.nvim" },
 	-- { "akinsho/toggleterm.nvim", version = "*", config = true },
 	-- { "voldikss/vim-floaterm" },
@@ -401,7 +389,33 @@ lvim.plugins = {
 	},
 	"ChristianChiarulli/swenv.nvim",
 	"stevearc/dressing.nvim",
+  "huggingface/llm.nvim",
 }
+
+require("llm").setup({
+  backend = "ollama",
+  model = "dolphincoder",
+  url = "http://localhost:11434/api/generate",
+  request_body = {
+    parameters = {
+      max_new_tokens = 60,
+      temperature = 0.2,
+      top_p = 0.95,
+    }
+  },
+  tokens_to_clear = { "<|endoftext|>" },
+  fim = {
+    enabled = true,
+    prefix = "<fim_prefix>",
+    middle = "<fim_middle>",
+    suffix = "<fim_suffix>",
+  },
+  debounce_ms = 150,
+  accept_keymap = "<Tab>",
+  dismiss_keymap = "<S-Tab>",
+  enable_suggestions_on_startup = false,
+  enable_suggestions_on_files = {"*.py", "*.rs", "*.cpp", "*.h", "*.c"},
+})
 
 lvim.builtin.which_key.mappings["C"] = {
 	name = "Python",

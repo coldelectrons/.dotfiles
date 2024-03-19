@@ -6,7 +6,8 @@
       	      blocklist-hosts,
               rust-overlay,
               freecad-realthunder,
-              chaotic,
+              # chaotic,
+              nixpkgs-ce,
               ... }@inputs:
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -22,7 +23,6 @@
       username = "thomas"; # username
       name = "thomas"; # name/identifier
       email = "frithomas@gmail.com"; # email (used for certain configurations)
-      dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
       wm = "plasma6"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
       wmType = "wayland";
       browser = "librewolf"; # Default browser; must select one from ./user/app/browser/
@@ -54,7 +54,6 @@
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true);
                  permittedInsecurePackages = [
-                   "qtwebkit-5.212.0-alpha4" # needed by smtube, but doesn't even compile???
                  ];
         };
       overlays = [ rust-overlay.overlays.default ];
@@ -65,7 +64,16 @@
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true);
                  permittedInsecurePackages = [
-                   # "qtwebkit-5.212.0-alpha4"
+                 ];
+        };
+      overlays = [ rust-overlay.overlays.default ];
+    };
+
+    pkgs-ce = import nixpkgs-ce {
+      system = systemSettings.system;
+      config = { allowUnfree = true;
+                 allowUnfreePredicate = (_: true);
+                 permittedInsecurePackages = [
                  ];
         };
       overlays = [ rust-overlay.overlays.default ];
@@ -73,10 +81,6 @@
 
     # configure lib
     lib = nixpkgs.lib;
-
-    pkgs-local = import (/home/thomas/.nixpkgs-local) {
-      config.allowUnfree = true;
-    };
 
   in {
     homeConfigurations = {
@@ -89,7 +93,7 @@
         extraSpecialArgs = {
           # pass config variables from above
           inherit pkgs-stable;
-          inherit pkgs-local;
+          inherit pkgs-ce;
           inherit systemSettings;
           inherit userSettings;
           inherit (inputs) nix-flatpak;
@@ -102,10 +106,11 @@
         system = systemSettings.system;
         modules = [ 
           ./configuration.nix
-          chaotic.nixosModules.default
         ];
         specialArgs = {
           # pass config variables from above
+          inherit pkgs-stable;
+          inherit pkgs-ce;
           inherit systemSettings;
           inherit userSettings;
           inherit (inputs) blocklist-hosts;
@@ -117,7 +122,8 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nixpkgs-ce.url = "github:coldelectrons/nixpkgs/personal";
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";

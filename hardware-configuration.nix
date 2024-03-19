@@ -25,6 +25,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/thomas/.local/share/Steam" =
+    { device = "/dev/disk/by-uuid/7407920b-3535-49d5-b9ed-f73b442ec36d";
+      fsType = "ext4";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/F000-517A";
       fsType = "vfat";

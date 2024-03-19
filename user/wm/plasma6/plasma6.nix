@@ -25,6 +25,8 @@
     pavucontrol
     pamixer
     termusic
+    wl-clipboard
+    wl-clipboard-x11
   ];
   services.udiskie.enable = true;
   services.udiskie.tray = "always";

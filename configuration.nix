@@ -112,11 +112,18 @@
     gparted
     ctmg
     cryptomator
-
+    dnsutils
+    dnstracer
+    zdns
+    usbutils
+    usbview
+    pciutils
 
     # games
     playonlinux
     lutris
+
+    (ollama.override{ acceleration="rocm"; })
   ];
 
   environment.localBinInPath = true;

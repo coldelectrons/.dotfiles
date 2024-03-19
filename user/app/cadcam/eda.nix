@@ -1,4 +1,4 @@
-{ pkgs, pkgs-local, ... }:
+{ pkgs, pkgs-ce, ... }:
 
 {
   home.packages = with pkgs; [
@@ -8,7 +8,7 @@
     pcb2gcode
     gerbv
     #pcb-rnd??
-    #pkgs-local.kicad # local nixpkgs with kicad 8
+    pkgs-ce.kicad # local nixpkgs with kicad 8
     #kikit
     #flatcam # broken bc of python39 and ipython
   ];

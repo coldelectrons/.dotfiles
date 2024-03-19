@@ -3,6 +3,19 @@
 {
   home.packages = with pkgs; [
     kitty
+    mdcat
+    termpdfpy
+    presenterm
+    slides
+    mdp
+    termimage
+    viu
+    kitty-img
+    pixcat
+    nb
+    neofetch
+    wl-clipboard
+    glow
   ];
   programs.kitty.enable = true;
   programs.kitty.settings = {

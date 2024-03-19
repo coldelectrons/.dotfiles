@@ -265,6 +265,7 @@ lvim.plugins = {
 			"nvim-telescope/telescope-media-files.nvim",
 			"renerocksai/calendar-vim",
 			"nvim-telescope/telescope-symbols.nvim",
+      "ekickx/clipboard-image.nvim",
 		},
 	},
 	{
@@ -390,6 +391,7 @@ lvim.plugins = {
 	"ChristianChiarulli/swenv.nvim",
 	"stevearc/dressing.nvim",
   "huggingface/llm.nvim",
+  "ellisonleao/glow.nvim",
 }
 
 require("llm").setup({

@@ -5,7 +5,7 @@
               home-manager, 
       	      blocklist-hosts,
               rust-overlay,
-              freecad-realthunder,
+              # freecad-realthunder,
               # chaotic,
               nixpkgs-ce,
               ... }@inputs:
@@ -97,7 +97,7 @@
           inherit systemSettings;
           inherit userSettings;
           inherit (inputs) nix-flatpak;
-          inherit (inputs) freecad-realthunder;
+          # inherit (inputs) freecad-realthunder;
         };
       };
     };
@@ -137,9 +137,9 @@
       flake = false;
     };
 
-    freecad-realthunder = {
-      url = "github:coldelectrons/freecad-realthunder-nix-flake";
-      flake = true;
-    };
+    # freecad-realthunder = {
+    #   url = "github:coldelectrons/freecad-realthunder-nix-flake";
+    #   flake = true;
+    # };
   };
 }

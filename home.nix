@@ -19,15 +19,15 @@
               ./user/lang/cc/cc.nix # C and C++ tools
               ./user/lang/python/python.nix
               ./user/lang/python/python-packages.nix
-              # ./user/lang/rust/rust.nix
+              ./user/lang/rust/rust.nix
               # ./user/lang/godot/godot.nix # Game development
               ./user/hardware/bluetooth.nix # Bluetooth
               ./user/app/terminal/kitty.nix
               ./user/app/browser/librewolf.nix
               ./user/app/virtualization/virtualization.nix
-              ./user/app/cadcam/freecad-realthunder.nix
+              # ./user/app/cadcam/freecad-realthunder.nix
               ./user/app/lunarvim/lunarvim.nix
-              # ./user/app/cadcam/eda.nix
+              ./user/app/cadcam/eda.nix
               ./user/hardware/bluetooth.nix # Bluetooth
             ];
 
@@ -44,11 +44,12 @@
     # bat-extras.batdiff
     # bat-extras.batwatch
     # bat-extras.prettybat
-    alacritty
-    kitty
+    # alacritty
+    # kitty
     # yazi
     eza
     pipx
+    python311Packages.pip
     thunderbird
     neomutt
     dmenu
@@ -71,6 +72,7 @@
     # dev packages
     libffi zlib
 
+    freecad
     prusa-slicer
     lightburn
     meshlab

@@ -22,13 +22,19 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us";
+    xkb.variant = "";
+    xkb.options = "caps:escape";
+  };
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma6 = {
     enable = true;
-    # enableQt5Integration = false;
+    enableQt5Integration = false;
   };
 
+  programs.xwayland.enable = true;
   # environment.plasma6.excludePackages = with pkgs; {
   #   
   # };

@@ -396,7 +396,7 @@ lvim.plugins = {
 
 require("llm").setup({
   backend = "ollama",
-  model = "dolphincoder",
+  model = "codellama:7b",
   url = "http://localhost:11434/api/generate",
   request_body = {
     parameters = {
@@ -413,8 +413,8 @@ require("llm").setup({
     suffix = "<fim_suffix>",
   },
   debounce_ms = 150,
-  accept_keymap = "<Tab>",
-  dismiss_keymap = "<S-Tab>",
+  accept_keymap = "<C-Tab>",
+  dismiss_keymap = "<S-C-Tab>",
   enable_suggestions_on_startup = false,
   enable_suggestions_on_files = {"*.py", "*.rs", "*.cpp", "*.h", "*.c"},
 })

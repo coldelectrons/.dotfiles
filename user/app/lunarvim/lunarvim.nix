@@ -7,6 +7,7 @@ in
     lunarvim
     neovim-unwrapped
     neovide
+    zk
   ];
 
   nixpkgs.config = {

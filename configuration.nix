@@ -118,6 +118,11 @@
     usbutils
     usbview
     pciutils
+    clinfo
+    usbimager
+    rpi-imager
+    sshfs
+    sirikali
 
     # games
     playonlinux

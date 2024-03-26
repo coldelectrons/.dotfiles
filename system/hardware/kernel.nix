@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages-rt_latest;
   boot.consoleLogLevel = 0;
   boot.extraModulePackages = with config.boot.kernelPackages; [
     zenpower
